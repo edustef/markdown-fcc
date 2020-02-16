@@ -1,0 +1,38 @@
+.container {
+  width: 95%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+#editor {
+  height: 40vh;
+  textarea {
+    display: block;
+    overflow: auto;
+    resize: none;
+    width: 98%;
+    margin: 0 auto;
+    padding: 5px;
+    box-sizing: border-box;
+  }
+}
+
+@media (min-width: 720px) {
+  .container {
+    flex-direction: row;
+  }
+
+  #editor,
+  #preview-body {
+    width: 49%;
+  }
+
+  #editor {
+   justify-self: flex-start;
+  }
+  #preview-body {
+    justify-self: flex-end;
+  }
+}

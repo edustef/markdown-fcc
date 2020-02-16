@@ -28,6 +28,4 @@ or unordered
 
 > This is a blockquote
 
-[!Alternative text here](https://via.placeholder.com/150/000000/FFFFFF/?text=IPaddress.net
-
-C/O https://placeholder.com/)
+[!Alternative text here](https://via.placeholder.com/150)
