@@ -13,7 +13,7 @@ export default class App extends Component {
       rawContent: "",
       renderedContent: "",
       editor: true,
-      isMobile: true
+      isMobile: false 
     };
   }
 
@@ -44,6 +44,7 @@ export default class App extends Component {
   // Adds listener for resizing to determine if it is mobile or not 
   componentDidMount() {
     window.addEventListener("resize", this.updateMobileState);
+    this.updateMobileState();
   }
   
   // Removes the listener at unmounting
