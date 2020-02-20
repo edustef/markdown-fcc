@@ -1,13 +1,26 @@
+.outer-container {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+}
+
 .container {
   width: 95%;
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin: 0 auto;
+  align-items: stretch;
+  margin: 16px auto;
+}
+
+#title {
+  text-align: center;
 }
 
 #editor {
-  height: 40vh;
+  display: flex;
+  flex-direction: column;
   textarea {
     display: block;
     overflow: auto;
@@ -16,9 +29,12 @@
     margin: 0 auto;
     padding: 5px;
     box-sizing: border-box;
+    flex-grow: 1;
   }
 }
-
+.group-toggle {
+  display: flex;
+}
 @media (min-width: 720px) {
   .container {
     flex-direction: row;
@@ -30,8 +46,15 @@
   }
 
   #editor {
-   justify-self: flex-start;
+    justify-self: flex-start;
   }
+
+  .group-toggle {
+    .btn-toggle {
+      display: none;
+    }
+  }
+
   #preview-body {
     justify-self: flex-end;
   }

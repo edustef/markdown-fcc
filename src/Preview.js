@@ -1,19 +1,18 @@
-import React, { Component } from 'react'
-
+import React, { Component } from "react";
 
 export default class Preview extends Component {
-  constructor(props) {
-    super(props);
-
-  }
   render() {
     return (
       <div id="preview-body">
-        <h2>Preview</h2>
-        <div id="preview">
-          {this.props.content}
+        <div className="group-toggle">
+          <h2>Preview</h2>
+          <button onClick={this.props.handleToggle} className="btn-toggle">Toggle</button>
         </div>
+        <div
+          id="preview"
+          dangerouslySetInnerHTML={{ __html: this.props.renderedContent }}
+        ></div>
       </div>
-    )
+    );
   }
 }

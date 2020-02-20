@@ -1,22 +1,25 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 export default class Editor extends Component {
-  constructor(props) {
-    super(props);
-
-  }
-
   render() {
     return (
       <div id="editor">
-        <h2>Editor</h2>
-        <textarea value={this.props.content} onChange={this.updateEditor} placeholder="Type here...">
-        </textarea>
+        <div className="group-toggle">
+          <h2>Editor</h2>
+          <button onClick={this.props.handleToggle} className="btn-toggle">
+            Toggle
+          </button>
+        </div>
+        <textarea
+          value={this.props.rawContent}
+          onChange={this.updateEditor}
+          placeholder="Type here..."
+        ></textarea>
       </div>
-    )
+    );
   }
 
-  updateEditor = (event) => {
+  updateEditor = event => {
     this.props.handleChange(event.target.value);
-  }
+  };
 }
