@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/markdown-fcc/static/css/main.ddeefb65.chunk.css",
+    "main.js": "/markdown-fcc/static/js/main.947d4639.chunk.js",
+    "main.js.map": "/markdown-fcc/static/js/main.947d4639.chunk.js.map",
+    "runtime-main.js": "/markdown-fcc/static/js/runtime-main.db4be05d.js",
+    "runtime-main.js.map": "/markdown-fcc/static/js/runtime-main.db4be05d.js.map",
+    "static/js/2.8423d0d0.chunk.js": "/markdown-fcc/static/js/2.8423d0d0.chunk.js",
+    "static/js/2.8423d0d0.chunk.js.map": "/markdown-fcc/static/js/2.8423d0d0.chunk.js.map",
+    "index.html": "/markdown-fcc/index.html",
+    "precache-manifest.9fc8164abbd9fd0d85d75af876f5f826.js": "/markdown-fcc/precache-manifest.9fc8164abbd9fd0d85d75af876f5f826.js",
+    "service-worker.js": "/markdown-fcc/service-worker.js",
+    "static/css/main.ddeefb65.chunk.css.map": "/markdown-fcc/static/css/main.ddeefb65.chunk.css.map",
+    "static/js/2.8423d0d0.chunk.js.LICENSE.txt": "/markdown-fcc/static/js/2.8423d0d0.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.db4be05d.js",
+    "static/js/2.8423d0d0.chunk.js",
+    "static/css/main.ddeefb65.chunk.css",
+    "static/js/main.947d4639.chunk.js"
+  ]
+}
