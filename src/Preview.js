@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 
+import Button from './components/Button';
+
 export default class Preview extends Component {
   render() {
     return (
-      <div id="preview-body">
+      <div id="preview-container">
         <div className="group-toggle">
           <h2>Preview</h2>
-          <button onClick={this.props.handleToggle} className="btn-toggle">Toggle</button>
+          <Button handleToggle={this.props.handleToggle}/>
         </div>
         <div
           id="preview"

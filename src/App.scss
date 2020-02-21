@@ -1,3 +1,17 @@
+%area {
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+}
+
+%text-area {
+  width: 100%;
+  padding: 16px;
+  box-sizing: border-box;
+  flex-grow: 1;
+  border: 2px solid gray;
+}
+
 .outer-container {
   display: flex;
   height: 100vh;
@@ -15,47 +29,75 @@
 }
 
 #title {
-  text-align: center;
+  margin: 16px auto;
+  font-size: 1.4em;
+  color: #a5a5a5;
 }
 
-#editor {
-  display: flex;
-  flex-direction: column;
+#editor-container {
+  @extend %area;
   textarea {
+    @extend %text-area;
     display: block;
     overflow: auto;
     resize: none;
-    width: 100%;
-    margin: 0 auto;
-    padding: 5px;
-    box-sizing: border-box;
+  }
+}
+
+#preview-container {
+  @extend %area;
+  #preview {
+    @extend %text-area;
+  }
+}
+
+.group-toggle {
+  display: flex;
+  h2 {
+    font-size: 1.2em;
+    color: rgb(99, 99, 99);
     flex-grow: 1;
   }
 }
-.group-toggle {
-  display: flex;
+
+#btn-toggle {
+  margin-left: 16px;
+  align-self: center;
 }
+
+#btn-toggle-pr {
+  border: none;
+  padding: 8px;
+  border-radius: 25px;
+
+  &:hover {
+    background-color: rgb(170, 170, 170);
+  }
+}
+
 @media (min-width: 720px) {
+  %area {
+    flex-grow: unset;
+  }
+
   .container {
     flex-direction: row;
   }
 
-  #editor,
-  #preview-body {
+  #editor-container,
+  #preview-container {
     width: 49%;
   }
 
-  #editor {
+  #editor-container {
     justify-self: flex-start;
   }
 
-  .group-toggle {
-    .btn-toggle {
-      display: none;
-    }
+  #btn-toggle {
+    display: none;
   }
 
-  #preview-body {
+  #preview-container {
     justify-self: flex-end;
   }
 }

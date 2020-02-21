@@ -1,3 +1,4 @@
+/* eslint-disable no-useless-concat */
 import React, { Component } from "react";
 import marked from "marked";
 import domPurify from "dompurify";
@@ -13,7 +14,7 @@ export default class App extends Component {
       rawContent: "",
       renderedContent: "",
       editor: true,
-      isMobile: false 
+      isMobile: false
     };
   }
 
@@ -41,18 +42,86 @@ export default class App extends Component {
     );
   }
 
-  // Adds listener for resizing to determine if it is mobile or not 
+  // Adds listener for resizing to determine if it is mobile or not
   componentDidMount() {
+    marked.setOptions({
+      gfm: true,
+      breaks: true
+    });
+    const dummyData =
+      "# This is heading 1" +
+      "\n" +
+      "## This is heading 2" +
+      "\n" +
+      "" +
+      "\n" +
+      "This is *italic* this is **bold** " +
+      "\n" +
+      "" +
+      "\n" +
+      "[GitHub](https://www.github.com)" +
+      "\n" +
+      "" +
+      "\n" +
+      "`<p>This is inline code</p>`" +
+      "\n" +
+      "```javascript" +
+      "\n" +
+      "for(let i = 0; i < 3; i++) {" +
+      "\n" +
+      'console.log("This is a code block");' +
+      "\n" +
+      "}" +
+      "\n" +
+      "```" +
+      "\n" +
+      "" +
+      "\n" +
+      "Ordered list " +
+      "\n" +
+      "" +
+      "\n" +
+      "1.item 1" +
+      "\n" +
+      "1. item 2" +
+      "\n" +
+      "3. item 3" +
+      "\n" +
+      "0. item 4" +
+      "\n" +
+      "" +
+      "\n" +
+      "or unordered" +
+      "\n" +
+      "" +
+      "\n" +
+      "- item 1" +
+      "\n" +
+      "- item 2" +
+      "\n" +
+      "- item 3" +
+      "\n" +
+      "" +
+      "\n" +
+      "> This is a blockquote" +
+      "\n" +
+      "" +
+      "\n" +
+      "![Alternative text here](https://via.placeholder.com/150)";
+    this.setState({
+      rawContent: dummyData
+    });
     window.addEventListener("resize", this.updateMobileState);
     this.updateMobileState();
+    this.handleChange(dummyData);
   }
-  
+
   // Removes the listener at unmounting
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateMobileState);
   }
 
-  // Converts the editor's raw text into html based on markdown syntax 
+  // Converts the editor's raw text into html based on markdown syntax
   handleChange = rawContent => {
     this.setState({
       rawContent: rawContent,

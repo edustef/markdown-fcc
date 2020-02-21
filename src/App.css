@@ -1,3 +1,27 @@
+#editor-container, #preview-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#editor-container textarea, #preview-container #preview {
+  width: 100%;
+  padding: 16px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  border: 2px solid gray;
+}
+
 .outer-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -31,31 +55,15 @@
 }
 
 #title {
-  text-align: center;
+  margin: 16px auto;
+  font-size: 1.4em;
+  color: #a5a5a5;
 }
 
-#editor {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-#editor textarea {
+#editor-container textarea {
   display: block;
   overflow: auto;
   resize: none;
-  width: 100%;
-  margin: 0 auto;
-  padding: 5px;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
 }
 
 .group-toggle {
@@ -64,24 +72,54 @@
   display: flex;
 }
 
+.group-toggle h2 {
+  font-size: 1.2em;
+  color: #636363;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+#btn-toggle {
+  margin-left: 16px;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+#btn-toggle-pr {
+  border: none;
+  padding: 8px;
+  border-radius: 25px;
+}
+
+#btn-toggle-pr:hover {
+  background-color: #aaaaaa;
+}
+
 @media (min-width: 720px) {
+  #editor-container, #preview-container {
+    -webkit-box-flex: unset;
+        -ms-flex-positive: unset;
+            flex-grow: unset;
+  }
   .container {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
   }
-  #editor,
-  #preview-body {
+  #editor-container,
+  #preview-container {
     width: 49%;
   }
-  #editor {
+  #editor-container {
     justify-self: flex-start;
   }
-  .group-toggle .btn-toggle {
+  #btn-toggle {
     display: none;
   }
-  #preview-body {
+  #preview-container {
     justify-self: flex-end;
   }
 }
