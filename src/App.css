@@ -19,10 +19,12 @@
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  border: 2px solid gray;
+  border: 1px solid #bbbbbb;
+  border-radius: 5px;
 }
 
 .outer-container {
+  background-color: #f5f5f5;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -64,6 +66,10 @@
   display: block;
   overflow: auto;
   resize: none;
+}
+
+#preview-container #preview {
+  background-color: white;
 }
 
 .group-toggle {
