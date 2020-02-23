@@ -70,6 +70,11 @@
 
 #preview-container #preview {
   background-color: white;
+  overflow-y: auto;
+}
+
+#preview-container pre {
+  overflow-x: auto;
 }
 
 .group-toggle {

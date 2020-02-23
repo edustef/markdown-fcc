@@ -49,8 +49,13 @@
 #preview-container {
   @extend %area;
   #preview {
-    background-color: white;
     @extend %text-area;
+    background-color: white;
+    overflow-y: auto;
+  }
+
+  pre {
+    overflow-x: auto;
   }
 }
 
