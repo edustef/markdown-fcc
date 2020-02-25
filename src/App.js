@@ -13,7 +13,11 @@ export default class App extends Component {
     this.state = {
       rawContent: "",
       renderedContent: "",
-      editor: true,
+      isEditor: true,
+      isEditorScroll: true,
+      scrollPercent: 0,
+      editorScrollPosition: 0,
+      previewScrollPosition: 0,
       isMobile: false
     };
   }
@@ -23,18 +27,22 @@ export default class App extends Component {
       <div className="outer-container">
         <h1 id="title">Markdown Preview</h1>
         <div className="container">
-          {this.state.editor || !this.state.isMobile ? (
+          {this.state.isEditor || !this.state.isMobile ? (
             <Editor
               handleChange={this.handleChange}
               handleToggle={this.handleToggle}
+              handleScroll={this.handleScroll}
+              handleIsEditorScroll={this.handleIsEditorScroll}
               rawContent={this.state.rawContent}
             />
           ) : null}
-          {!this.state.editor || !this.state.isMobile ? (
+          {!this.state.isEditor || !this.state.isMobile ? (
             <Preview
               handleChange={this.handleChange}
               renderedContent={this.state.renderedContent}
               handleToggle={this.handleToggle}
+              handleScroll={this.handleScroll}
+              handleIsEditorScroll={this.handleIsEditorScroll}
             />
           ) : null}
         </div>
@@ -131,15 +139,56 @@ export default class App extends Component {
 
   // This only works if isMobile is true
   handleToggle = () => {
-    this.setState({
-      editor: !this.state.editor
+    this.setState(state => {
+      return {
+        isEditor: !state.isEditor
+      };
     });
   };
+
+  getScrollPercent = (panel) => {
+    this.setState(() => ({
+      scrollPercent : panel.scrollTop / (panel.scrollHeight - panel.offsetHeight);
+    }));
+  }
+
+  setScrollPosition() {
+    let editorPanel = document.querySelector("#editor");
+    let previewPanel = document.querySelector("#preview");
+    this.setState(state => ({
+      editorScrollPosition: (editorScroll.scrollHeight - editorPanel.offsetHeight) * state.percent;
+      previewScrollPosition: (previewPanel.scrollHeight - previewPanel.offsetHeight) * state.percent;
+    }));
+  }
 
   // Check if isMobile is true
   updateMobileState = () => {
     this.setState({
       isMobile: window.innerWidth <= 720 ? true : false
     });
+  };
+
+  handleScroll = () => {
+    if (
+      window
+        .getComputedStyle(document.querySelector("#btn-toggle"))
+        .getPropertyValue("display") === "none"
+    ) {
+      let elem1 = document.querySelector("#editor");
+      let elem2 = document.querySelector("#preview");
+      if (!this.state.isEditorScroll) {
+        elem1 = document.querySelector("#preview");
+        elem2 = document.querySelector("#editor");
+      }
+
+      let percent = elem1.scrollTop / (elem1.scrollHeight - elem1.offsetHeight);
+      elem2.scrollTop = (elem2.scrollHeight - elem2.offsetHeight) * percent;
+    }
+  };
+
+  handleIsEditorScroll = isEditorScroll => {
+    this.setState(() => ({
+      isEditorScroll: isEditorScroll
+    }));
   };
 }

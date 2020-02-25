@@ -9,8 +9,10 @@
   padding: 16px;
   box-sizing: border-box;
   flex-grow: 1;
+  height: 50vh;
   border: 1px solid rgb(187, 187, 187);
   border-radius: 5px;
+  overflow-wrap: break-word;
 }
 
 .outer-container {
@@ -41,7 +43,7 @@
   textarea {
     @extend %text-area;
     display: block;
-    overflow: auto;
+    overflow-y: auto;
     resize: none;
   }
 }
@@ -69,6 +71,7 @@
 }
 
 #btn-toggle {
+  display: inline-block;
   margin-left: 16px;
   align-self: center;
 }

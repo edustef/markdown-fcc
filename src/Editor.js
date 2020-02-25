@@ -13,14 +13,14 @@ export default class Editor extends Component {
         <textarea
           id="editor"
           value={this.props.rawContent}
-          onChange={this.updateEditor}
+          onChange={event => {
+            this.props.handleChange(event.target.value);
+          }}
           placeholder="Type here..."
+          onMouseOver={() => this.props.handleIsEditorScroll(true)}
+          onScroll={this.props.handleScroll}
         ></textarea>
       </div>
     );
   }
-
-  updateEditor = event => {
-    this.props.handleChange(event.target.value);
-  };
 }

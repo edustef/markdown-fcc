@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import Button from './components/Button';
+import Button from "./components/Button";
 
 export default class Preview extends Component {
   render() {
@@ -8,11 +8,13 @@ export default class Preview extends Component {
       <div id="preview-container">
         <div className="group-toggle">
           <h2>Preview</h2>
-          <Button handleToggle={this.props.handleToggle}/>
+          <Button handleToggle={this.props.handleToggle} />
         </div>
         <div
           id="preview"
           dangerouslySetInnerHTML={{ __html: this.props.renderedContent }}
+          onMouseOver={() => this.props.handleIsEditorScroll(false)}
+          onScroll={this.props.handleScroll}
         ></div>
       </div>
     );
