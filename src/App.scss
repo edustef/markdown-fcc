@@ -10,13 +10,13 @@
   box-sizing: border-box;
   flex-grow: 1;
   height: 50vh;
-  border: 1px solid rgb(187, 187, 187);
+  border: 2px solid rgb(0, 0, 0);
   border-radius: 5px;
   overflow-wrap: break-word;
 }
 
 .outer-container {
-  background-color: #f5f5f5;
+  background: url("http://api.thumbr.it/whitenoise-361x370.png?background=d7f7f3ff&noise=cccccc&density=25&opacity=10");
   display: flex;
   height: 100vh;
   flex-direction: column;
@@ -35,7 +35,7 @@
 #title {
   margin: 16px auto;
   font-size: 1.4em;
-  color: #a5a5a5;
+  color: #605d74;
 }
 
 #editor-container {
@@ -65,7 +65,7 @@
   display: flex;
   h2 {
     font-size: 1.2em;
-    color: rgb(99, 99, 99);
+    color: #605d74;
     flex-grow: 1;
   }
 }

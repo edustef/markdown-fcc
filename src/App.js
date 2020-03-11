@@ -129,7 +129,7 @@ export default class App extends Component {
     window.removeEventListener("resize", this.updateMobileState);
   }
 
-  // Converts the editor's raw text into html based on markdown syntax
+  // Converts the editor's raw text into html 
   handleChange = rawContent => {
     this.setState({
       rawContent: rawContent,
@@ -137,7 +137,6 @@ export default class App extends Component {
     });
   };
 
-  // This only works if isMobile is true
   handleToggle = () => {
     this.setState(state => {
       return {
@@ -161,7 +160,6 @@ export default class App extends Component {
     }));
   }
 
-  // Check if isMobile is true
   updateMobileState = () => {
     this.setState({
       isMobile: window.innerWidth <= 720 ? true : false
