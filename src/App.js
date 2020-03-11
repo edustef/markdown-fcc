@@ -148,7 +148,7 @@ export default class App extends Component {
 
   getScrollPercent = (panel) => {
     this.setState(() => ({
-      scrollPercent : panel.scrollTop / (panel.scrollHeight - panel.offsetHeight);
+      scrollPercent : panel.scrollTop / (panel.scrollHeight - panel.offsetHeight)
     }));
   }
 
@@ -156,8 +156,8 @@ export default class App extends Component {
     let editorPanel = document.querySelector("#editor");
     let previewPanel = document.querySelector("#preview");
     this.setState(state => ({
-      editorScrollPosition: (editorScroll.scrollHeight - editorPanel.offsetHeight) * state.percent;
-      previewScrollPosition: (previewPanel.scrollHeight - previewPanel.offsetHeight) * state.percent;
+      editorScrollPosition: (editorPanel.scrollHeight - editorPanel.offsetHeight) * state.percent,
+      previewScrollPosition: (previewPanel.scrollHeight - previewPanel.offsetHeight) * state.percent
     }));
   }
 
