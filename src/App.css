@@ -20,7 +20,7 @@
       -ms-flex-positive: 1;
           flex-grow: 1;
   height: 50vh;
-  border: 2px solid black;
+  border: 2px solid #605d74;
   border-radius: 5px;
   overflow-wrap: break-word;
 }
@@ -102,13 +102,14 @@
 }
 
 #btn-toggle-pr {
-  border: none;
+  border: 1px solid #605d74;
   padding: 8px;
-  border-radius: 25px;
+  background-color: transparent;
 }
 
-#btn-toggle-pr:hover {
-  background-color: #aaaaaa;
+#btn-toggle-pr:hover, #btn-toggle-pr:active {
+  background-color: #605d74;
+  color: white;
 }
 
 @media (min-width: 720px) {

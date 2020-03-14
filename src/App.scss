@@ -1,3 +1,4 @@
+$gray-color: #605d74;
 %area {
   display: flex;
   flex-grow: 1;
@@ -10,7 +11,7 @@
   box-sizing: border-box;
   flex-grow: 1;
   height: 50vh;
-  border: 2px solid rgb(0, 0, 0);
+  border: 2px solid $gray-color;
   border-radius: 5px;
   overflow-wrap: break-word;
 }
@@ -35,7 +36,7 @@
 #title {
   margin: 16px auto;
   font-size: 1.4em;
-  color: #605d74;
+  color: $gray-color;
 }
 
 #editor-container {
@@ -65,7 +66,7 @@
   display: flex;
   h2 {
     font-size: 1.2em;
-    color: #605d74;
+    color: $gray-color;
     flex-grow: 1;
   }
 }
@@ -77,12 +78,13 @@
 }
 
 #btn-toggle-pr {
-  border: none;
+  border: 1px solid $gray-color;
   padding: 8px;
-  border-radius: 25px;
+  background-color: transparent;
 
-  &:hover {
-    background-color: rgb(170, 170, 170);
+  &:hover, &:active{
+    background-color: $gray-color;
+    color: white;
   }
 }
 
