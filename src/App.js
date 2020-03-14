@@ -14,10 +14,7 @@ export default class App extends Component {
       rawContent: "",
       renderedContent: "",
       isEditor: true,
-      isEditorScroll: true,
       scrollPercent: 0,
-      editorScrollPosition: 0,
-      previewScrollPosition: 0,
       isMobile: false
     };
   }
@@ -32,7 +29,7 @@ export default class App extends Component {
               handleChange={this.handleChange}
               handleToggle={this.handleToggle}
               handleScroll={this.handleScroll}
-              handleIsEditorScroll={this.handleIsEditorScroll}
+              handleIsEditor={this.handleIsEditor}
               rawContent={this.state.rawContent}
             />
           ) : null}
@@ -42,7 +39,7 @@ export default class App extends Component {
               renderedContent={this.state.renderedContent}
               handleToggle={this.handleToggle}
               handleScroll={this.handleScroll}
-              handleIsEditorScroll={this.handleIsEditorScroll}
+              handleIsEditor={this.handleIsEditor}
             />
           ) : null}
         </div>
@@ -119,17 +116,17 @@ export default class App extends Component {
     this.setState({
       rawContent: dummyData
     });
-    window.addEventListener("resize", this.updateMobileState);
-    this.updateMobileState();
+    window.addEventListener("resize", this.updateIsMobileState);
+    this.updateIsMobileState();
     this.handleChange(dummyData);
   }
 
   // Removes the listener at unmounting
   componentWillUnmount() {
-    window.removeEventListener("resize", this.updateMobileState);
+    window.removeEventListener("resize", this.updateIsMobileState);
   }
 
-  // Converts the editor's raw text into html 
+  // Converts the editor's raw text into html
   handleChange = rawContent => {
     this.setState({
       rawContent: rawContent,
@@ -138,55 +135,37 @@ export default class App extends Component {
   };
 
   handleToggle = () => {
-    this.setState(state => {
-      return {
+    this.getScrollPercent(
+      document.querySelector(this.state.isEditor ? "#editor" : "#preview")
+    );
+    this.setState(
+      state => ({
         isEditor: !state.isEditor
-      };
-    });
+      }),
+      this.setScrollPosition(
+        document.querySelector(this.state.isEditor ? "#editor" : "#preview")
+      )
+    );
   };
 
-  getScrollPercent = (panel) => {
+  getScrollPercent = panel => {
     this.setState(() => ({
-      scrollPercent : panel.scrollTop / (panel.scrollHeight - panel.offsetHeight)
+      scrollPercent: panel.scrollTop / (panel.scrollHeight - panel.offsetHeight)
     }));
-  }
+  };
 
-  setScrollPosition() {
-    let editorPanel = document.querySelector("#editor");
-    let previewPanel = document.querySelector("#preview");
+  setScrollPosition = panel => {
     this.setState(state => ({
-      editorScrollPosition: (editorPanel.scrollHeight - editorPanel.offsetHeight) * state.percent,
-      previewScrollPosition: (previewPanel.scrollHeight - previewPanel.offsetHeight) * state.percent
+      panelScrollPosition:
+        (panel.scrollHeight - panel.offsetHeight) * state.percent
     }));
-  }
+  };
 
-  updateMobileState = () => {
+  updateIsMobileState = () => {
     this.setState({
       isMobile: window.innerWidth <= 720 ? true : false
     });
   };
 
-  handleScroll = () => {
-    if (
-      window
-        .getComputedStyle(document.querySelector("#btn-toggle"))
-        .getPropertyValue("display") === "none"
-    ) {
-      let elem1 = document.querySelector("#editor");
-      let elem2 = document.querySelector("#preview");
-      if (!this.state.isEditorScroll) {
-        elem1 = document.querySelector("#preview");
-        elem2 = document.querySelector("#editor");
-      }
-
-      let percent = elem1.scrollTop / (elem1.scrollHeight - elem1.offsetHeight);
-      elem2.scrollTop = (elem2.scrollHeight - elem2.offsetHeight) * percent;
-    }
-  };
-
-  handleIsEditorScroll = isEditorScroll => {
-    this.setState(() => ({
-      isEditorScroll: isEditorScroll
-    }));
-  };
+  handleScroll = () => {};
 }

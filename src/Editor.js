@@ -3,6 +3,13 @@ import React, { Component } from "react";
 import Button from "./components/Button";
 
 export default class Editor extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      scrollPosition: 0
+    };
+  }
   render() {
     return (
       <div id="editor-container">
@@ -17,7 +24,7 @@ export default class Editor extends Component {
             this.props.handleChange(event.target.value);
           }}
           placeholder="Type here..."
-          onMouseOver={() => this.props.handleIsEditorScroll(true)}
+          onMouseOver={() => this.props.handleIsEditor(true)}
           onScroll={this.props.handleScroll}
         ></textarea>
       </div>

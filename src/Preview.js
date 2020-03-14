@@ -13,7 +13,7 @@ export default class Preview extends Component {
         <div
           id="preview"
           dangerouslySetInnerHTML={{ __html: this.props.renderedContent }}
-          onMouseOver={() => this.props.handleIsEditorScroll(false)}
+          onMouseOver={() => this.props.handleIsEditor(false)}
           onScroll={this.props.handleScroll}
         ></div>
       </div>
