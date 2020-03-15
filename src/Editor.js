@@ -17,8 +17,10 @@ export default class Editor extends Component {
             this.props.handleChange(event.target.value);
           }}
           placeholder="Type here..."
-          onMouseOver={() => this.props.handleIsEditorScroll(true)}
-          onScroll={this.props.handleScroll}
+          onMouseOver={
+            !this.props.isMobile ? () => this.props.handleIsEditor(true) : null
+          }
+          onScroll={!this.props.isMobile ? this.props.handleScroll : null}
         ></textarea>
       </div>
     );
