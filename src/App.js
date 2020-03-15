@@ -6,6 +6,7 @@ import domPurify from "dompurify";
 import Editor from "./Editor";
 import Preview from "./Preview";
 import "./App.css";
+// import BarLoader from '@bit/davidhu2000.react-spinners.bar-loader';
 
 export default class App extends Component {
   constructor(props) {
@@ -55,72 +56,15 @@ export default class App extends Component {
       gfm: true,
       breaks: true
     });
-    const dummyData =
-      "# This is heading 1" +
-      "\n" +
-      "## This is heading 2" +
-      "\n" +
-      "" +
-      "\n" +
-      "This is *italic* this is **bold** " +
-      "\n" +
-      "" +
-      "\n" +
-      "[GitHub](https://www.github.com)" +
-      "\n" +
-      "" +
-      "\n" +
-      "`<p>This is inline code</p>`" +
-      "\n" +
-      "```javascript" +
-      "\n" +
-      "for(let i = 0; i < 3; i++) {" +
-      "\n" +
-      'console.log("This is a code block");' +
-      "\n" +
-      "}" +
-      "\n" +
-      "```" +
-      "\n" +
-      "" +
-      "\n" +
-      "Ordered list " +
-      "\n" +
-      "" +
-      "\n" +
-      "1.item 1" +
-      "\n" +
-      "1. item 2" +
-      "\n" +
-      "3. item 3" +
-      "\n" +
-      "0. item 4" +
-      "\n" +
-      "" +
-      "\n" +
-      "or unordered" +
-      "\n" +
-      "" +
-      "\n" +
-      "- item 1" +
-      "\n" +
-      "- item 2" +
-      "\n" +
-      "- item 3" +
-      "\n" +
-      "" +
-      "\n" +
-      "> This is a blockquote" +
-      "\n" +
-      "" +
-      "\n" +
-      "![Alternative text here](https://via.placeholder.com/150)";
-    this.setState({
-      rawContent: dummyData
-    });
+
     window.addEventListener("resize", this.updateIsMobileState);
     this.updateIsMobileState();
-    this.handleChange(dummyData);
+
+    if (!localStorage.getItem("rawContent")) {
+      this.populateStorage();
+    } else {
+      this.setRawContent();
+    }
   }
 
   // Removes the listener at unmounting
@@ -130,10 +74,13 @@ export default class App extends Component {
 
   // Converts the editor's raw text into html
   handleChange = rawContent => {
-    this.setState({
-      rawContent: rawContent,
-      renderedContent: domPurify.sanitize(marked(rawContent))
-    });
+    this.setState(
+      {
+        rawContent: rawContent,
+        renderedContent: domPurify.sanitize(marked(rawContent))
+      },
+      this.populateStorage
+    );
   };
 
   handleIsEditor = isEditor => {
@@ -181,5 +128,13 @@ export default class App extends Component {
     this.setState({
       isMobile: window.innerWidth <= 720 ? true : false
     });
+  };
+
+  populateStorage = () => {
+    localStorage.setItem("rawContent", this.state.rawContent);
+  };
+
+  setRawContent = () => {
+    this.handleChange(localStorage.getItem("rawContent"));
   };
 }

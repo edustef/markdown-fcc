@@ -16,7 +16,7 @@ export default class Editor extends Component {
           onChange={event => {
             this.props.handleChange(event.target.value);
           }}
-          placeholder="Type here..."
+          placeholder="Write here anything you want..."
           onMouseOver={
             !this.props.isMobile ? () => this.props.handleIsEditor(true) : null
           }
