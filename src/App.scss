@@ -1,4 +1,5 @@
 $gray-color: #605d74;
+$light-gray: rgb(221, 221, 223);
 %area {
   display: flex;
   flex-grow: 1;
@@ -65,9 +66,25 @@ $gray-color: #605d74;
 .group-toggle {
   display: flex;
   h2 {
-    font-size: 1.2em;
+    font-size: 1.3em;
     color: $gray-color;
+  }
+  h2 + div {
     flex-grow: 1;
+    align-self: center;
+    & > button {
+      border: 1px solid $gray-color;
+      background-color: transparent;
+      padding: 4px;
+      margin-left: 16px;
+    }
+    & > button:hover,
+    & > button:active {
+      background-color: $light-gray;
+    }
+    img {
+      width: 1em;
+    }
   }
 }
 
@@ -82,9 +99,9 @@ $gray-color: #605d74;
   padding: 8px;
   background-color: transparent;
 
-  &:hover, &:active{
-    background-color: $gray-color;
-    color: white;
+  &:hover,
+  &:active {
+    background-color: $light-gray;
   }
 }
 

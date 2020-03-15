@@ -2,6 +2,7 @@
 import React, { Component } from "react";
 import marked from "marked";
 import domPurify from "dompurify";
+import { saveAs } from "file-saver";
 
 import Editor from "./Editor";
 import Preview from "./Preview";
@@ -33,6 +34,7 @@ export default class App extends Component {
               handleScroll={this.handleScroll}
               handleIsEditor={this.handleIsEditor}
               rawContent={this.state.rawContent}
+              saveFile={this.saveFile}
             />
           ) : null}
           {!this.state.isMobile || !this.state.isEditor ? (
@@ -43,6 +45,7 @@ export default class App extends Component {
               handleToggle={this.handleToggle}
               handleScroll={this.handleScroll}
               handleIsEditor={this.handleIsEditor}
+              saveFile={this.saveFile}
             />
           ) : null}
         </div>
@@ -136,5 +139,12 @@ export default class App extends Component {
 
   setRawContent = () => {
     this.handleChange(localStorage.getItem("rawContent"));
+  };
+
+  saveFile = (content, name) => {
+    let blob = new Blob([content], {
+      type: "text/plain;charset=utf-8"
+    });
+    saveAs(blob, name);
   };
 }
