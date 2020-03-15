@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import Button from "./components/Button";
+import Button from "./components/ToggleButton";
 
 export default class Editor extends Component {
   render() {
@@ -8,6 +8,15 @@ export default class Editor extends Component {
       <div id="editor-container">
         <div className="group-toggle">
           <h2>Editor</h2>
+          <div>
+            <button className="dl-btn" onClick={() => this.props.saveFile(this.props.rawContent, "rawContent.md")}>
+              <img
+                src={process.env.PUBLIC_URL + "/icons/download-solid.svg"}
+                alt="Download "
+              />{" "}
+              markdown
+            </button>
+          </div>
           <Button handleToggle={this.props.handleToggle} />
         </div>
         <textarea
