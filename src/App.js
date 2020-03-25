@@ -64,9 +64,9 @@ export default class App extends Component {
     this.updateIsMobileState();
 
     if (!localStorage.getItem("rawContent")) {
-      this.populateStorage();
+      localStorage.setItem("rawContent", this.state.rawContent);
     } else {
-      this.setRawContent();
+      this.handleChange(localStorage.getItem("rawContent"));
     }
   }
 
@@ -131,14 +131,6 @@ export default class App extends Component {
     this.setState({
       isMobile: window.innerWidth <= 720 ? true : false
     });
-  };
-
-  populateStorage = () => {
-    localStorage.setItem("rawContent", this.state.rawContent);
-  };
-
-  setRawContent = () => {
-    this.handleChange(localStorage.getItem("rawContent"));
   };
 
   saveFile = (content, name) => {

@@ -19,6 +19,7 @@ export default class Preview extends Component {
               }
             >
               <img
+                className="svg-icon"
                 src={process.env.PUBLIC_URL + "/icons/download-solid.svg"}
                 alt="Download "
               />{" "}
